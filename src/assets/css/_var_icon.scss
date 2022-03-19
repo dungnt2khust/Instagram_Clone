@@ -1,0 +1,20 @@
+// Gán thuộc tính theo các prefix khác nhau
+@mixin makeProperty($property, $value) {
+    @each $prefix in -webkit-, -moz-, -ms-, -o-, "" {
+        #{$prefix}#{$property}: value;
+    }
+}
+
+// Tạo class icon mới
+@mixin setIcon($iconName, $svgSource, $bgPosX, $bgPosY, $width, $height) {
+    .#{$iconName} {
+        background: $svgSource no-repeat $bgPosX $bgPosY;
+        width: $width;
+        height: $height;
+    }
+}
+
+$svgSource1: url('https://www.instagram.com/static/bundles/es6/sprite_glyphs_42be7ea14768.png/42be7ea14768.png');
+
+@include setIcon(mi-next, $svgSource1, -244px, -107px, 45px, 45px);
+@include setIcon(mi-previous, $svgSource1, -379px, -128px, 45px, 45px);
